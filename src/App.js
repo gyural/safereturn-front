@@ -1,11 +1,10 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import MissingList from './componets/MissingList';
-
+import MissingListPage from './componets/page/MissingListPage';
 function App() {
   return (
       <div>
-        <MissingList></MissingList>
+        <MissingListPage></MissingListPage>
 
       </div>
   );
