@@ -2,19 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 
 const CardList = styled.div`
-  max-width: 550px;
+  width: 100%;
   padding: 12px 8px;
   height: 680px; /* CardList의 높이를 고정하거나 필요에 따라 조정 */
   overflow-y: scroll; /* 내용이 넘칠 경우 수직 스크롤 표시 */
   background-color: #e4e6e4;
+  box-sizing: border-box;
 
 `;
 
 const CardContainer = styled.div`
-  max-width: 540px;
-  height: 180px; /* CardContainer의 높이를 고정 */
+  width: 100%;
+  height: 214px;
   padding: 19px 5px;
   margin: 0px auto 10px;
+  box-sizing: border-box;
   border: 1px solid #D9D9D9;
   background-color: #fff;
   border-radius: 8px;
