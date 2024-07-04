@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import missingList from '../missingList.json'
 
 const CardList = styled.div`
   width: 100%;
@@ -18,11 +19,17 @@ const CardContainer = styled.div`
   margin: 0px auto 10px;
   box-sizing: border-box;
   border: 1px solid #D9D9D9;
-  background-color: #fff;
+  background-color: ${props => (props.selected ? '#818181' : '#fff')};
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
+  transition: background-color 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${props => (props.selected ? '#818181' : '#a8a8a8')};
+  }
 `;
 
 const CardImg = styled.img`
@@ -79,64 +86,38 @@ const Tag = styled.div`
   font-weight: bold;
 `
 
-function MissingList() {
+function MissingList({setSelectedCard, selectedCard}) {
+  
+
+  const handleCardClick = (index) => {
+    setSelectedCard(missingList[index]);
+  };
+
   return (
-    <CardList>
-      <CardContainer>
-        <CardImg src={`${process.env.PUBLIC_URL}/dummy/miss_thumbnail3.png`} alt="Card" />
-        <CardBody>
-          <CardTitle>이름 : 아무개(60세)</CardTitle> <Tag>치매</Tag>
-          <CardText><CardInfo>위치 : </CardInfo>3km 이내 추정</CardText>
-          <CardText><CardInfo>체형 : </CardInfo>170cm 69kg</CardText>
-          <CardText><CardInfo>의상 : </CardInfo>빨간색 와이셔츠, 청바지청바지청바지청바지청바지v</CardText>
-          
-          <CardText>
-            <TextBodySecondary>Last updated 3 mins ago</TextBodySecondary>
-          </CardText>
-        </CardBody>
-      </CardContainer>
-
-      <CardContainer>
-        <CardImg src={`${process.env.PUBLIC_URL}/dummy/miss_thumbnail1.png`} alt="Card" />
-        <CardBody>
-          <CardTitle>Card Title</CardTitle>
-          <CardText>
-            This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-          </CardText>
-          <CardText>
-            <TextBodySecondary>Last updated 3 mins ago</TextBodySecondary>
-          </CardText>
-        </CardBody>
-      </CardContainer>
-
-      <CardContainer>
-        <CardImg src={`${process.env.PUBLIC_URL}/dummy/miss_thumbnail1.png`} alt="Card" />
-        <CardBody>
-          <CardTitle>Card Title</CardTitle>
-          <CardText>
-            This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-          </CardText>
-          <CardText>
-            <TextBodySecondary>Last updated 3 mins ago</TextBodySecondary>
-          </CardText>
-        </CardBody>
-      </CardContainer>
-
-      <CardContainer>
-        <CardImg src={`${process.env.PUBLIC_URL}/dummy/miss_thumbnail2.png`} alt="Card" />
-        <CardBody>
-          <CardTitle>Card Title</CardTitle>
-          <CardText>
-            This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-          </CardText>
-          <CardText>
-            <TextBodySecondary>Last updated 3 mins ago</TextBodySecondary>
-          </CardText>
-        </CardBody>
-      </CardContainer>
-
-      {/* 추가적인 CardContainer들도 동일하게 추가 */}
-    </CardList>
+    <>
+      <CardList>
+        {missingList.map((missing, index) => (
+          <CardContainer
+            key={index}
+            selected={selectedCard && selectedCard === missing}
+            onClick={() => handleCardClick(index)}
+          >
+            <CardImg src={`${process.env.PUBLIC_URL}/dummy/miss_thumbnail3.png`} alt="Card" />
+            <CardBody>
+              <CardTitle>{missing.name} ({missing.age}세)</CardTitle>
+              <Tag>치매</Tag>
+              <CardText><CardInfo>위치 : </CardInfo>{missing.place}</CardText>
+              <CardText><CardInfo>체형 : </CardInfo>{missing.body}</CardText>
+              <CardText><CardInfo>의상 : </CardInfo>{missing.wearing}</CardText>
+              <CardText>
+                <TextBodySecondary>Last updated 3 mins ago</TextBodySecondary>
+              </CardText>
+            </CardBody>
+          </CardContainer>
+        ))}
+      </CardList>
+     
+    </>
   );
 }
 
