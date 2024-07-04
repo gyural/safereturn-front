@@ -105,13 +105,13 @@ function ReportModal({ isOpen, onRequestClose, selectedCard }) {
         <h1>신고자 정보</h1>
         <TextInput
           type="text"
-          placeholder="신고자 이름을 입력해주세요..."
+          placeholder="이름을 입력해주세요..."
           value={reporterName}
           onChange={(e) => setReporterName(e.target.value)}
         />
         <TextInput
           type="text"
-          placeholder="신고자 연락처를 입력해주세요..."
+          placeholder="연락처를 입력해주세요..."
           value={reporterContact}
           onChange={(e) => setReporterContact(e.target.value)}
         />

@@ -30,21 +30,21 @@ const InnerContainer = styled.div`
 const Icon = styled.div`
   width: 32px;
   height: 32px;
-  background-image: url('/click-icon.png');
+  background-image: url('/reportIcon.png');
   background-size: cover;
   background-repeat: no-repeat;
   margin-right: 10px;
 `;
 
-function Header({handleReportClick, handleListMode}) {
+function HeaderDetail({handleListMode}) {
   return (
     <HeaderContainer>
       <InnerContainer>
-        <p>실종자를 선택해주세요</p>
+        <p>상세 정보</p>
         <CloseButton onClick={handleListMode}></CloseButton>
       </InnerContainer>
     </HeaderContainer>
   );
 }
 
-export default Header;
+export default HeaderDetail;

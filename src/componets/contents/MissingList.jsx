@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import missingList from '../missingList.json'
+import missingList from '../../missingList.json'
 
 const CardList = styled.div`
   width: 100%;
@@ -87,12 +87,7 @@ const Tag = styled.div`
   font-weight: bold;
 `
 
-function MissingList({setSelectedCard, selectedCard}) {
-  
-
-  const handleCardClick = (index) => {
-    setSelectedCard(missingList[index]);
-  };
+function MissingList({handleCardClick, selectedCard}) {
 
   return (
     <>
@@ -101,7 +96,7 @@ function MissingList({setSelectedCard, selectedCard}) {
           <CardContainer
             key={index}
             selected={selectedCard && selectedCard === missing}
-            onClick={() => handleCardClick(index)}
+            onClick={() => handleCardClick(missingList[index])}
           >
             <CardImg src={`${process.env.PUBLIC_URL}/dummy/miss_thumbnail${missing.img}.png`} alt="Card" />
             <CardBody>
