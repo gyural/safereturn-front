@@ -4,6 +4,9 @@ import { Button } from 'react-bootstrap';
 
 const HeaderContainer = styled.div`
   width: 100%;
+  height: 60px;
+  position: fixed;
+  z-index: 1;
   text-align: center;
   padding: 10px 0;
   background-color: #f8f9fa;

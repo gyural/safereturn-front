@@ -9,10 +9,8 @@ const Container = styled.div`
   margin: 0 auto;
   max-width: 540px;
   overflow: hidden;
-  
+  padding-top: 60px;
 `
-
-
 
 const Content = styled.div`
   
@@ -43,15 +41,16 @@ function MissingListPage() {
         <Content>
           <MissingList setSelectedCard={setSelectedCard} selectedCard={selectedCard}></MissingList>
         </Content>
-        {isReportMode && (
+        
+
+      </Container>
+      {isReportMode && (
           <ReportModal 
             isOpen={selectedCard !== null} 
             onRequestClose={closeModal} 
             selectedCard={selectedCard} 
           />
         )}
-
-      </Container>
     </>
   )
 }
