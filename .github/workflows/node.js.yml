@@ -33,7 +33,6 @@ jobs:
     - uses: awact/s3-action@master
       with:
         clean: 'false'
-      with:
         args: --acl public-read --follow-symlinks --delete
       env:
         SOURCE_DIR: ''
