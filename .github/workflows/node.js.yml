@@ -31,8 +31,8 @@ jobs:
 
     
     - uses: actions/checkout@master
-			with:
-				clean: 'false'
+      with:
+        clean: 'false'
     - uses: awact/s3-action@master
       with:
         args: --acl public-read --follow-symlinks --delete
